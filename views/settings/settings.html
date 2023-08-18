@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="settings.css"/>
+    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.min.css">
+    <title>Settings</title>
+</head>
+<body>
+    <div id="container">
+        <section>
+            <label for="duration">Pomodoro Set Duration (minutes):</label>
+            <select id="duration" class="duration-selection">
+                <option>5</option>
+                <option>10</option>
+                <option>15</option>
+                <option selected>20</option>
+                <option>25</option>
+                <option>30</option>
+                <option>35</option>
+                <option>40</option>
+                <option>45</option>
+            </select>
+        </section>
+        <section>
+            <div>Load Sound Effect:</div>
+            <button id="dialog-btn">Load</button>
+        </section>
+    </div>
+<script src="settings.renderer.js"></script>
+</body>
+</html>

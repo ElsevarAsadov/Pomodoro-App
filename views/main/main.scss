@@ -1,0 +1,129 @@
+@import "font/font";
+@import 'fontawesome-free-6.4.2-web/scss/fontawesome';
+@import 'fontawesome-free-6.4.2-web/scss/solid';
+@import 'fontawesome-free-6.4.2-web/scss/regular';
+@import 'fontawesome-free-6.4.2-web/scss/brands';
+
+
+$red-color: #ff0000;
+$blue-color: #007bff;
+
+$play-button-color: #4caf50;
+$pause-button-color: #f39c12;
+$stop-button-color: #e74c3c;
+
+$bg: white;
+$text-color: white;
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  //background-color: var(--bg);
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  color: $text-color;
+  background: linear-gradient(to right, $red-color,$blue-color);
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s linear infinite alternate;
+  cursor: default;
+  user-select: none;
+}
+.content{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+.header-panel{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 80px;
+  //background-color: var(--bg);
+  background-color: transparent;
+  padding-right: 15px;
+  i{
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  i:hover{
+    animation: spin 1s;
+  }
+}
+.timer-container{
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  //background-color: var(--bg);
+  background-color: transparent;
+}
+.timer{
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+.controlls{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+
+  #pause-btn{
+    display: none;
+  }
+  #stop-btn{
+    display: none;
+  }
+
+  .controll-btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline-color: white;
+
+    i{
+      font-size: 3rem;
+      cursor: pointer;
+    }
+    i.green{
+      color: $play-button-color;
+    }
+    i.yellow{
+      color: $pause-button-color;
+    }
+    i.gray{
+      color: $stop-button-color;
+    }
+  }
+}
+
+
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes spin {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}

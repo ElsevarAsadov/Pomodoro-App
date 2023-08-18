@@ -1,0 +1,50 @@
+@import "font/font";
+@import 'fontawesome-free-6.4.2-web/scss/fontawesome';
+@import 'fontawesome-free-6.4.2-web/scss/solid';
+@import 'fontawesome-free-6.4.2-web/scss/regular';
+@import 'fontawesome-free-6.4.2-web/scss/brands';
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #007bff;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+  font-size: .7rem;
+  margin: 0;
+  padding: 0;
+
+  cursor: default;
+  user-select: none;
+}
+
+#container {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: 100vw;
+  height: 100vh;
+  padding: 5px;
+
+  section{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+
+
+    button{
+      width: 50%;
+      cursor: pointer;
+    }
+  }
+}
+
+.duration-selection {
+  width: 100%;
+}
