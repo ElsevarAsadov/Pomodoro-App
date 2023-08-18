@@ -7,9 +7,9 @@ const os = require('os')
 const path = require('path')
 
 //hot reloader do not include in production!!!
-// try {
-//     require('electron-reloader')(module)
-// } catch (_) {}
+try {
+    require('electron-reloader')(module)
+} catch (_) {}
 
 const createWindow = () => {
     let settingsMenu;
@@ -27,6 +27,29 @@ const createWindow = () => {
     })
     //when window content html, css, js loaded fully then show
     mainWindow.once('ready-to-show', mainWindow.show)
+
+    settingsWindow = new BrowserWindow({
+        width: 200,
+        height: 200,
+        resizable: false,
+        minimizable: false,
+        title: '',
+        parent: mainWindow,
+        modal: true,
+        icon: null,
+        show: false,
+        x: mainWindow.getPosition()[0] + mainWindow.getSize()[0] / 2 - 200 / 2,
+        y: mainWindow.getPosition()[1] + mainWindow.getSize()[1] / 2 - 200 / 2,
+        webPreferences: {
+            preload: path.resolve(__dirname, '../settings/settings.preload.js')
+        }
+    })
+    settingsWindow.loadFile('views/settings/settings.html')
+
+    settingsWindow.on('close', (e)=>{
+        e.preventDefault()
+        settingsWindow.hide()
+    })
 
     function send2Renderer(channel, x){
         mainWindow.webContents.send(channel, x)
@@ -55,25 +78,9 @@ const createWindow = () => {
 
 
     ipcMain.on('open-window:settings', (event)=>{
-        settingsWindow = new BrowserWindow({
-            width: 200,
-            height: 200,
-            resizable: false,
-            minimizable: false,
-            title: '',
-            parent: mainWindow,
-            modal: true,
-            icon: null,
-            show: false,
-            x: mainWindow.getPosition()[0] + mainWindow.getSize()[0] / 2 - 200 / 2,
-            y: mainWindow.getPosition()[1] + mainWindow.getSize()[1] / 2 - 200 / 2,
-            webPreferences: {
-                preload: path.resolve(__dirname, '../settings/settings.preload.js')
-            }
-        })
-        settingsWindow.loadFile('views/settings/settings.html')
         //when window is ready and html fully loaded then show
         settingsWindow.once('ready-to-show', settingsWindow.show)
+        settingsWindow.show()
     })
 
     ipcMain.on('openFileDialog', openFileDialog)
