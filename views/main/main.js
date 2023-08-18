@@ -22,7 +22,8 @@ const createWindow = () => {
         title: 'Pomodoro',
         show: false,
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js')
+            preload: path.join(__dirname, 'preload.js'),
+            backgroundThrottling: false,
         }
     })
     //when window content html, css, js loaded fully then show
