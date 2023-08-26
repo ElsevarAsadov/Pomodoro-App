@@ -7,9 +7,9 @@ const os = require('os')
 const path = require('path')
 
 //hot reloader do not include in production!!!
-try {
-    require('electron-reloader')(module)
-} catch (_) {}
+//try {
+    //require('electron-reloader')(module)
+//} catch (_) {}
 
 const createWindow = () => {
     let settingsMenu;
